@@ -3,18 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css" />
     <script data-require="angular.js@1.2.10" data-semver="1.2.10" src="http://code.angularjs.org/1.2.10/angular.js"></script>
     <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
-    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container" ng-app="app">
+    <div class="container" ng-app="App" ng-controller="DemoCtrl">
         <header ng-include="'templates/header.html'"></header>
+
+        <h1>[[ title ]]</h1>
+        <ul>
+            <li ng-repeat="friend in items">[[ friend ]]</li>
+        </ul>
+
+        <select ng-model="defaultPeriod" ng-options="value for value in items"></select>
+
+        <input type="text" ng-model="timespan">
+        <p>Show data for the last [[ timespan ]] days</p>
+
+        [[ hellos ]]
+
+        <animation></animation>
+
+        <ul>
+            <li ng-repeat="friend in friends">[[ friend.name ]]: [[ friend.age ]]</li>
+        </ul>
+
+        <div ng-repeat="friend in friends">
+            <contact-card friend="friend" title="'Contact Card'"></contact-card>
+        </div>
+
         <footer ng-include="'templates/footer.html'"></footer>
     </div>
 
 
 
-    <script src="app.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/DemoController.js"></script>
+    <script src="scripts/services/Goats.js"></script>
+    <script src="scripts/directives/contactCard.js"></script>
 </body>
 </html>
